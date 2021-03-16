@@ -1,12 +1,12 @@
-<!-- <div class="container-fluid">
+ <!-- <div class="container-fluid">
   <h3>Hot Deals</h3>
   <div class="row flex-row flex-nowrap overflow-auto prodContainer">
-    <ng-container *ngFor="let ele of productList">
+    <ng-container *ngFor="let ele of productAddedTocart">
       <div class="col-lg-2 col-md-5 col-sm-11 cart">
-        <img [src]="ele.image" alt="" style="width: 90%;">
-        <p>{{ ele.name }}</p>
+        <img [src]="ele.CategoryCard_image" alt="" style="width: 90%;">
+        <p>{{ ele.CategoryCard_Name}}</p>
         <b>
-          <h5>EGY {{ ele.price }}</h5>
+          <h5>EGY {{ ele.CategoryCard_Price_Unit }}</h5>
         </b>
         <i class="fa fa-heart" aria-hidden="true" style="float: left;"></i>
         <i class="fa fa-cart-plus" aria-hidden="true" style="float: right;"></i><br><br>
@@ -14,20 +14,125 @@
       </div>
     </ng-container>
   </div>
-</div> -->
+</div>  -->
 
+<!-- //////////////////////////////////////////// -->
 <!-- Product Cart -->
-<!-- <div class="row flex-row flex-nowrap overflow-auto prodContainer">
-  <ng-container *ngFor="let ele of productList">
+ <!-- <div class="row flex-row flex-nowrap overflow-auto prodContainer">
+  <ng-container *ngFor="let ele of productAddedTocart">
     <div class="col-lg-2 col-md-5 col-sm-11 cart">
-      <img [src]="ele.image" alt="" style="width: 90%;">
-      <p>{{ ele.name }}</p>
+      <img [src]="ele.CategoryCard_image" alt="" style="width: 90%;">
+      <p>{{ ele. CategoryCard_Name }}</p>
       <b>
-        <h5>EGY {{ ele.price }}</h5>
+        <h5>EGY {{ ele.CategoryCard_Price_Unit  }}</h5>
       </b>
       <i class="fa fa-heart" aria-hidden="true" style="float: left;"></i>
       <i class="fa fa-cart-plus" aria-hidden="true" style="float: right;"></i><br><br>
       <app-product-rate></app-product-rate>
     </div>
   </ng-container>
-</div> -->
+</div>   -->
+
+
+
+
+<!-- /////////////////////////////////////////////////////// -->
+<!-- 
+<section class="cart-section spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="cart-table">
+          <h3>Your Cart</h3>
+          <div class="cart-table-warp">
+            <table>
+            <thead>
+              <tr>
+                <th class="product-th">Product</th>
+                <th class="quy-th">Quantity</th>
+                <th class="size-th">SizeSize</th>
+                <th class="total-th">Price</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let CartItem of productAddedTocart">
+              <tr>
+                <td class="product-col">
+                  <img src="assets/{{CartItem.CategoryCard_Image}}" alt="">
+                  <div class="pc-title">
+                    <h4>{{CartItem.CategoryCard_Name}}</h4>
+                   
+                  </div>
+                </td>
+                <td class="quy-col">
+                  <div class="quantity">
+                                <div class="pro-qty">
+                                    <span class="inc qtybtn" (click)="onAddQuantity(CartItem)">+</span>
+                                  <input type="text"  [ngModel] ="CartItem.CategoryCard_Quantity" (ngModelChange) ="CartItem.CategoryCard_Quantity=$event">
+                                  <span class="dec qtybtn" (click)=" onRemoveQuantity(CartItem)">-</span>
+                                </div>
+                            </div>
+                </td>
+                <td class="size-col"><h4>Size M</h4></td>
+                <td class="total-col"><h4>{{CartItem.CategoryCard_Price_Unit * CartItem.CategoryCard_Quantity}}</h4></td>
+              </tr>
+           
+             
+            </tbody>
+          </table>
+          </div>
+          <div class="total-cost">
+            <h6>Total <span>{{allTotal}}</span></h6>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</section> -->
+
+
+
+<!-- /////////////////////////// -->
+
+
+
+
+
+
+
+ 
+<div class="container table-bordered">
+  <h2>your Card</h2>
+  <table class="table table-hover">
+      <thead class="thead-dark">
+          <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>price</th>
+              <th>quantity</th>
+          </tr>
+      </thead>
+      <tbody *ngFor= "let CartItem of productAddedTocart">
+          <tr >
+              <td>{{CartItem.CategoryCard_ID }}</td>
+              <td>{{CartItem.CategoryCard_Name}}</td>
+              <td>{{CartItem.CategoryCard_Price_Unit}}</td>
+              <td>{{CartItem. CategoryCard_Quantity}}</td>
+             <td> <td class="quy-col">
+                  <div class="quantity">
+                                <div class="pro-qty">
+                                    <button class="btn btn-primarty" (click)="onAddQuantity(CartItem)">+</button>
+                                  <input type="text"  [ngModel] ="CartItem.CategoryCard_Quantity" (ngModelChange) ="CartItem.CategoryCard_Quantity=$event">
+                                  <span class="dec qtybtn" (click)=" onRemoveQuantity(CartItem)">-</span>
+                                </div>
+                            </div>
+                          </td>
+                          
+                
+          </tr>
+      </tbody>
+  </table>
+  <div class="total-cost">
+    <h6>Total <span>{{allTotal}}</span></h6>
+  </div>
+</div> 
